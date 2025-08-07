@@ -1,0 +1,52 @@
+<app-header></app-header>
+<div class="container mt-3 mb-1 d-flex justify-content-center">
+  <div class="card p-4 shadow-sm" style="width: 40rem;">
+    <h3 class="text-center text-white p-2 rounded-top rounded-bottom bg-primary mb-3">Add User Activity</h3>
+
+    <form [formGroup]="addActivityForm" (ngSubmit)="addActivity()">
+      <div class="mb-3">
+        <label for="userId" class="form-label">User ID</label>
+        <input type="number" id="userId" class="form-control" formControlName="userId" [disabled]="true" />
+      </div>
+  
+      <div class="mb-3">
+        <label for="activityTypeId" class="form-label">Activity Type</label>
+        <select id="activityTypeId" class="form-control" formControlName="activityTypeId" required>
+          <option value="">Select Activity Type</option>
+          <option *ngFor="let type of activityTypes" [value]="type.activityTypeId">{{ type.description }}</option>
+        </select>
+      </div>
+  
+      <div class="mb-3">
+        <label for="activityDate" class="form-label">Activity Date</label>
+        <input type="date" id="activityDate" class="form-control" formControlName="activityDate" />
+      </div>
+  
+      <div class="row">
+        <div class="col">
+          <label for="startTime" class="form-label">Start Time</label>
+          <input type="time" id="startTime" class="form-control" formControlName="startTime" />
+        </div>
+        <div class="col">
+          <label for="endTime" class="form-label">End Time</label>
+          <input type="time" id="endTime" class="form-control" formControlName="endTime" />
+        </div>
+      </div>
+  
+      <div class="mb-3 mt-3">
+        <label for="caloriesBurned" class="form-label">Calories Burned (kcal)</label>
+        <input type="number" id="caloriesBurned" class="form-control" formControlName="caloriesBurned" />
+      </div>
+  
+      <div class="d-grid mt-4">
+        <button type="submit" class="btn btn-primary">Add Activity</button>
+      </div>
+    </form>
+
+    <!-- Success Message -->
+    <div *ngIf="addSuccess" class="alert alert-success mt-3" role="alert">
+      Activity added successfully!
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

@@ -1,0 +1,144 @@
+<app-header></app-header>
+<div class='d-flex justify-content-center align-items-top vh-100 bg-light'>
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-10 col-lg-8">
+        <div class="card shadow">
+          <div class="card-body">
+            <div class="bg-primary text-white p-2 rounded-top rounded-bottom text-center">
+              <h2 class="card-title mb-0">Update User Details</h2>
+            </div>
+            <form [formGroup]="updateForm" (ngSubmit)="updateUser()">
+              <div class="row mt-3">
+                <!-- Left Column -->
+                <div class="col-md-6">
+                  <!-- User ID Field -->
+                  <div class="form-group mb-3 d-flex align-items-center">
+                    <div class="d-flex me-2">
+                      <label for="userId" class="form-label">User ID:</label>
+                      <input
+                        type="number"
+                        id="userId"
+                        formControlName="id"
+                        class="form-control"
+                        placeholder="Enter User ID"
+                      />
+                    </div>
+                    <button type="button" class="btn btn-secondary" (click)="fetchUserDetails()">Fetch User Details</button>
+                  </div>
+
+                  <!-- Name Field -->
+                  <div class="form-group mb-3">
+                    <label for="userName" class="form-label">Name:</label>
+                    <input
+                      type="text"
+                      id="userName"
+                      formControlName="userName"
+                      class="form-control"
+                      placeholder="Enter your name"
+                    />
+                    <div *ngIf="updateForm.get('userName')?.invalid && updateForm.get('userName')?.touched" class="text-danger mt-1">
+                      <small>Name is required.</small>
+                    </div>
+                  </div>
+
+                  <!-- Age Field -->
+                  <div class="form-group mb-3">
+                    <label for="userAge" class="form-label">Age:</label>
+                    <input
+                      type="number"
+                      id="userAge"
+                      formControlName="userAge"
+                      class="form-control"
+                      placeholder="Enter your age"
+                    />
+                    <div *ngIf="updateForm.get('userAge')?.invalid && updateForm.get('userAge')?.touched" class="text-danger mt-1">
+                      <small>Age is required and must be at least 1.</small>
+                    </div>
+                  </div>
+
+                  <!-- Gender Field -->
+                  <div class="form-group mb-3">
+                    <label for="genderRefId" class="form-label">Gender:</label>
+                    <select id="genderRefId" formControlName="genderRefId" class="form-select">
+                      <option value="">Select gender</option>
+                      <option value="1">Male</option>
+                      <option value="2">Female</option>
+                    </select>
+                    <div *ngIf="updateForm.get('genderRefId')?.invalid && updateForm.get('genderRefId')?.touched" class="text-danger mt-1">
+                      <small>Gender is required.</small>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Right Column -->
+                <div class="col-md-6">
+                  <!-- Height Field -->
+                  <div class="form-group mb-3">
+                    <label for="userHeight" class="form-label">Height (cm):</label>
+                    <input
+                      type="number"
+                      id="userHeight"
+                      formControlName="userHeight"
+                      class="form-control"
+                      placeholder="Enter your height"
+                    />
+                  </div>
+
+                  <!-- Weight Field -->
+                  <div class="form-group mb-3">
+                    <label for="userWeight" class="form-label">Weight (kg):</label>
+                    <input
+                      type="number"
+                      id="userWeight"
+                      formControlName="userWeight"
+                      class="form-control"
+                      placeholder="Enter your weight"
+                    />
+                  </div>
+
+                  <!-- Email Field -->
+                  <div class="form-group mb-3">
+                    <label for="userEmail" class="form-label">Email:</label>
+                    <input
+                      type="email"
+                      id="userEmail"
+                      formControlName="userEmail"
+                      class="form-control"
+                      placeholder="Enter your email"
+                    />
+                  </div>
+
+                  <!-- Password Field -->
+                  <div class="form-group mb-4">
+                    <label for="userPassword" class="form-label">Password:</label>
+                    <input
+                      type="password"
+                      id="userPassword"
+                      formControlName="userPassword"
+                      class="form-control"
+                      placeholder="Enter your password"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <!-- Submit Button -->
+              <div class="d-flex justify-content-center gap-3 mt-4">
+                <button type="submit" class="btn btn-primary btn-lg" [disabled]="updateForm.invalid">
+                  Update
+                </button>
+              </div>
+
+              <!-- Success Message -->
+              <div *ngIf="updateSuccess" class="alert alert-success mt-3 mb-0 text-center">
+                User details updated successfully!
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

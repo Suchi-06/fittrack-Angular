@@ -1,0 +1,24 @@
+<app-header></app-header>
+<div class="container mt-5">
+    <div class="card w-50 h-50">
+      <div class="card-body">
+        <h5 class="card-title">Add Physical Activity</h5>
+        <div class="mb-3">
+          <input
+            type="text"
+            [(ngModel)]="activityDescription"
+            class="form-control"
+            placeholder="Enter Activity Description"
+          />
+        </div>
+        <button class="btn btn-primary" (click)="addActivity()">Add</button>
+  
+        <!-- Success message -->
+        <div *ngIf="successMessage" class="alert alert-success mt-3">
+          {{ successMessage }}
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-footer></app-footer>
+  

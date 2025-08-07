@@ -1,0 +1,62 @@
+<app-header></app-header>
+<div class="container mt-5">
+  <div class="text-center mb-4">
+    <h2 class="display-5 fw-bold">🏋️‍♂️ User Activities</h2>
+    <p class="text-muted">View activities based on your user ID</p>
+  </div>
+
+  <!-- Input and Button in One Line -->
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="input-group">
+        <input
+          type="number"
+          id="userId"
+          [(ngModel)]="userId"
+          class="form-control"
+          placeholder="Enter User ID"
+          disabled
+        />
+        <button
+          class="btn btn-primary"
+          type="button"
+          (click)="fetchActivities()"
+        >
+          Fetch Activities
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Activities Table -->
+  <div *ngIf="activities.length > 0" class="mt-4">
+    <div class="table-responsive">
+      <table class="table table-hover table-bordered align-middle">
+        <thead class="table-dark">
+          <tr>
+            <th scope="col" class="text-center">Activity ID</th>
+            <th scope="col" class="text-center">Activity Name</th>
+            <th scope="col" class="text-center">Activity Date</th>
+            <th scope="col" class="text-center">Calories Burned</th>
+            <th scope="col" class="text-center">Duration (Minutes)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let activity of activities">
+            <td class="text-center">{{ activity.activityId }}</td>
+            <td class="text-center">{{ activity.activityName }}</td>
+            <td class="text-center">{{ activity.activityDate }}</td>
+            <td class="text-center">{{ activity.caloriesBurned }}</td>
+            <td class="text-center">{{ activity.duration }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- No Activities Found Message -->
+  <div *ngIf="activities.length === 0" class="text-center mt-4 text-muted">
+    No activities found for the selected user.
+  </div>
+</div>
+<app-footer></app-footer>

@@ -1,0 +1,77 @@
+<div class='d-flex justify-content-center align-items-top vh-100 bg-primary'>
+ <div class="container bg-primary mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6 col-lg-4">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <div class="bg-primary text-white p-2 rounded-top rounded-bottom text-center">
+          <h2 class="card-title text-center ">FitTrack User Login</h2>
+          </div>
+          <form [formGroup]="loginForm" (ngSubmit)="login()" novalidate>
+            <!-- Email Field -->
+            <div class="form-group mb-3 mt-3">
+              <label for="userEmail" class="form-label">Email:</label>
+              <input
+                type="email"
+                id="userEmail"
+                formControlName="userEmail"
+                class="form-control"
+                placeholder="Enter your email"
+                [ngClass]="{
+                  'is-invalid': loginForm.get('userEmail')?.invalid && loginForm.get('userEmail')?.touched
+                }"
+              />
+              <div
+                *ngIf="loginForm.get('userEmail')?.invalid && loginForm.get('userEmail')?.touched"
+                class="invalid-feedback"
+              >
+                <small *ngIf="loginForm.get('userEmail')?.errors?.['required']">Email is required.</small>
+                <small *ngIf="loginForm.get('userEmail')?.errors?.['pattern']">Invalid email format.</small>
+              </div>
+            </div>
+
+            <!-- Password Field -->
+            <div class="form-group mb-4">
+              <label for="userPassword" class="form-label">Password:</label>
+              <input
+                type="password"
+                id="userPassword"
+                formControlName="userPassword"
+                class="form-control"
+                placeholder="Enter your password"
+                [ngClass]="{
+                  'is-invalid': loginForm.get('userPassword')?.invalid && loginForm.get('userPassword')?.touched
+                }"
+              />
+              <div
+                *ngIf="loginForm.get('userPassword')?.invalid && loginForm.get('userPassword')?.touched"
+                class="invalid-feedback"
+              >
+                <small *ngIf="loginForm.get('userPassword')?.errors?.['required']">Password is required.</small>
+                <small *ngIf="loginForm.get('userPassword')?.errors?.['minlength']"
+                  >Password must be at least 4 characters.</small
+                >
+                <small *ngIf="loginForm.get('userPassword')?.errors?.['pattern']"
+                  >Password must contain at least one uppercase letter, one lowercase letter, one number, and one special
+                  character.</small
+                >
+              </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="d-grid mb-4">
+              <button type="submit" class="btn btn-primary btn-block" [disabled]="loginForm.invalid">Login</button>
+            </div>
+
+            <!-- New User? Register Button -->
+            <div class="text-center">
+              <span class="me-2">New user?</span>
+              <a routerLink="/register" class="btn btn-outline-primary btn-sm">Register</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+ </div>
+</div>

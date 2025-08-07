@@ -1,0 +1,149 @@
+<div class='d-flex justify-content-center align-items-top vh-100 bg-primary'>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-10 col-lg-8">
+      <div class="card shadow">       
+        <div class="card-body">
+          <div class="bg-primary text-white p-2 rounded-top rounded-bottom text-center">
+            <h2 class="card-title text-center mb-0">Fittrack User Registration</h2>
+          </div>
+          <form [formGroup]="registerForm" (ngSubmit)="register()">
+            <div class="row mt-3">
+              <!-- Left Column -->
+              <div class="col-md-6">
+                <!-- Name Field -->
+                <div class="form-group mb-3">
+                  <label for="userName" class="form-label">Name:</label>
+                  <input
+                    type="text"
+                    id="userName"
+                    formControlName="userName"
+                    class="form-control"
+                    placeholder="Enter your name"
+                  />
+                  <div *ngIf="registerForm.get('userName')?.invalid && registerForm.get('userName')?.touched" class="text-danger mt-1">
+                    <small *ngIf="registerForm.get('userName')?.errors?.['required']">Name is required.</small>
+                  </div>
+                </div>
+
+                <!-- Age Field -->
+                <div class="form-group mb-3">
+                  <label for="userAge" class="form-label">Age:</label>
+                  <input
+                    type="number"
+                    id="userAge"
+                    formControlName="userAge"
+                    class="form-control"
+                    placeholder="Enter your age"
+                  />
+                  <div *ngIf="registerForm.get('userAge')?.invalid && registerForm.get('userAge')?.touched" class="text-danger mt-1">
+                    <small *ngIf="registerForm.get('userAge')?.errors?.['required']">Age is required.</small>
+                    <small *ngIf="registerForm.get('userAge')?.errors?.['min']">Age must be at least 1.</small>
+                  </div>
+                </div>
+
+                <!-- Gender Field -->
+                <div class="form-group mb-3">
+                  <label for="genderRefId" class="form-label">Gender:</label>
+                  <select id="genderRefId" formControlName="genderRefId" class="form-select">
+                    <option value="">Select gender</option>
+                    <option value="1">Male</option>
+                    <option value="2">Female</option>
+                  </select>
+                  <div *ngIf="registerForm.get('genderRefId')?.invalid && registerForm.get('genderRefId')?.touched" class="text-danger mt-1">
+                    <small *ngIf="registerForm.get('genderRefId')?.errors?.['required']">Gender is required.</small>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Right Column -->
+              <div class="col-md-6">
+                <!-- Height Field -->
+                <div class="form-group mb-3">
+                  <label for="userHeight" class="form-label">Height (cm):</label>
+                  <input
+                    type="number"
+                    id="userHeight"
+                    formControlName="userHeight"
+                    class="form-control"
+                    placeholder="Enter your height"
+                  />
+                  <div *ngIf="registerForm.get('userHeight')?.invalid && registerForm.get('userHeight')?.touched" class="text-danger mt-1">
+                    <small *ngIf="registerForm.get('userHeight')?.errors?.['required']">Height is required.</small>
+                  </div>
+                </div>
+
+                <!-- Weight Field -->
+                <div class="form-group mb-3">
+                  <label for="userWeight" class="form-label">Weight (kg):</label>
+                  <input
+                    type="number"
+                    id="userWeight"
+                    formControlName="userWeight"
+                    class="form-control"
+                    placeholder="Enter your weight"
+                  />
+                  <div *ngIf="registerForm.get('userWeight')?.invalid && registerForm.get('userWeight')?.touched" class="text-danger mt-1">
+                    <small *ngIf="registerForm.get('userWeight')?.errors?.['required']">Weight is required.</small>
+                  </div>
+                </div>
+
+                <!-- Email Field -->
+                <div class="form-group mb-3">
+                  <label for="userEmail" class="form-label">Email:</label>
+                  <input
+                    type="email"
+                    id="userEmail"
+                    formControlName="userEmail"
+                    class="form-control"
+                    placeholder="Enter your email"
+                  />
+                  <div *ngIf="registerForm.get('userEmail')?.invalid && registerForm.get('userEmail')?.touched" class="text-danger mt-1">
+                    <small *ngIf="registerForm.get('userEmail')?.errors?.['required']">Email is required.</small>
+                    <small *ngIf="registerForm.get('userEmail')?.errors?.['pattern']">Invalid email format.</small>
+                  </div>
+                </div>
+
+                <!-- Password Field -->
+                <div class="form-group mb-4">
+                  <label for="userPassword" class="form-label">Password:</label>
+                  <input
+                    type="password"
+                    id="userPassword"
+                    formControlName="userPassword"
+                    class="form-control"
+                    placeholder="Enter your password"
+                  />
+                  <div *ngIf="registerForm.get('userPassword')?.invalid && registerForm.get('userPassword')?.touched" class="text-danger mt-1">
+                    <small *ngIf="registerForm.get('userPassword')?.errors?.['required']">Password is required.</small>
+                    <small *ngIf="registerForm.get('userPassword')?.errors?.['minlength']">Password must be at least 4 characters.</small>
+                    <small *ngIf="registerForm.get('userPassword')?.errors?.['pattern']">Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character.</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Submit Button and Login Button -->
+            <div class="d-flex justify-content-center gap-3 mt-4">
+              <!-- Register Button -->
+              <button type="submit" class="btn btn-primary btn-lg" [disabled]="registerForm.invalid">
+                Register
+              </button>
+
+              <!-- Login Button -->
+              <a routerLink="/login" class="btn btn-outline-primary btn-lg">
+                Login
+              </a>
+            </div>
+
+            <!-- Success Message -->
+            <div *ngIf="registrationSuccess" class="alert alert-success mt-3 mb-0 text-center">
+              Registration successful! Go to Login Page.
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

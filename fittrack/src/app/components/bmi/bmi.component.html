@@ -1,0 +1,31 @@
+<app-header></app-header>
+<div class="container mt-5">
+  <div class="card w-50 h-50">
+    <div class="card-body">
+      <h5 class="card-title">Check Your BMI</h5>
+      <div class="mb-3">
+        <input
+          type="number"
+          [(ngModel)]="userId"
+          class="form-control"
+          placeholder="Enter User ID"
+        />
+      </div>
+      <button class="btn btn-primary" (click)="fetchBmi()">Fetch BMI</button>
+
+      <!-- Error Message -->
+      <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+        {{ errorMessage }}
+      </div>
+
+      <!-- BMI Result Card -->
+      <div *ngIf="bmiData" class="alert alert-success mt-3">
+        <p>BMI: {{ bmiData.bmi }}</p>
+        <p>Health Status: {{ bmiData.healthStatus }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <app-footer></app-footer>
+  

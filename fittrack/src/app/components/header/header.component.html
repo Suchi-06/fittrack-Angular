@@ -1,0 +1,27 @@
+<div class="header d-flex justify-content-between align-items-center p-3 bg-primary text-white">
+  <div class="d-flex align-items-center">
+    <img src="/logo.png" alt="FitTrack Logo" height="50" width="auto" class="me-2">
+    <h3>Welcome to FitTrack</h3>
+  </div>
+  <div>
+    <button class="btn btn-light me-2" routerLink="/dashboard">Home</button>
+    
+  
+    <div class="btn-group me-2">
+      <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+        Menu
+      </button>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" routerLink="/update-user">Update User</a></li>
+        <li><a class="dropdown-item" routerLink="/bmi">Calculate BMI</a></li>
+        <li><a class="dropdown-item" routerLink="/add-physical-activity">Add Physical Activity</a></li>
+        <li><a class="dropdown-item" routerLink="/add-user-activity">Add User Activity</a></li>
+        <li><a class="dropdown-item" routerLink="/add-meal">Add Meal</a></li>
+        <li><a class="dropdown-item" routerLink="/user-activity-list-byid">List of User Activities</a></li>
+        <li><a class="dropdown-item" routerLink="/user-activity-list-bydate">Leader Board</a></li>
+      </ul>
+    </div>
+
+    <button class="btn btn-danger" (click)="logout()">Logout</button>
+  </div>
+</div>
